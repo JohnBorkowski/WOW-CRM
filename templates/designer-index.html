@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WEA Demonstration</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			function updateScroll(){
+				var element = document.getElementById("chat");
+				element.scrollTop = element.scrollHeight;
+			}
+		</script>
+		<!--
+		<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+		-->
+		<link href="/static/stylesheets/styles.css" rel="stylesheet">
+		<style>
+p {
+	position: relative;
+}
+input {
+	position: absolute;
+	width: 275px;
+	left: 115px;
+}
+		</style>
+	</head>
+	<body onload=updateScroll()>
+		<div class="container">
+			<header>
+				<h1>Partner Digitial Concierge...chat with Watson!</h1>
+			</header>	
+			<aside>
+				<section class="faq">
+					<h3>Customer Information</h3>
+					<p>
+						<b>Name:</b><br>
+						Douglas Ayeres
+					</p>
+					<p>
+						<b>ID Number:</b><br>
+						{{cust_id}}
+					</p>
+				</section>		
+			</aside>
+			<main class="chat">
+				<section class="faq">
+					<h3>Customer Profile</h3>
+					<p>
+						<b>Account Balance:</b><br>
+						Current Balance: <input type='text' name='current_balance' value='{{profile["account_balance"]["current_balance"]}}'/><br>
+						As of Date: <input type='text' name='current_balance_as_of_date' value='{{profile["account_balance"]["current_balance_as_of_date"]}}'/><br>
+					</p>
+					<p>
+						<b>Home Address:</b><br>
+						Address Line 1: <input type='text' name='home_address_address_line_1' value='{{profile["home_address"]["address_line_1"]}}'/><br>
+						Address Line 2: <input type='text' name='home_address_address_line_2' value='{{profile["home_address"]["address_line_2"]}}'/><br>
+						City: <input type='text' name='home_address_city' value='{{profile["home_address"]["city"]}}'/><br>
+						State: <input type='text' name='home_address_state' value='{{profile["home_address"]["state"]}}'/><br>
+						Zip: <input type='text' name='home_address_zip' value='{{profile["home_address"]["zip"]}}'/>
+					</p>
+					<p>
+						<b>Mailing Address:</b><br>
+						Address Line 1: <input type='text' name='mailing_address_address_line_1' value='{{profile["mailing_address"]["address_line_1"]}}'/><br>
+						Address Line 2: <input type='text' name='mailing_address_address_line_2' value='{{profile["mailing_address"]["address_line_2"]}}'/><br>
+						City: <input type='text' name='mailing_address_city' value='{{profile["mailing_address"]["city"]}}'/><br>
+						State: <input type='text' name='mailing_address_state' value='{{profile["mailing_address"]["state"]}}'/><br>
+						Zip: <input type='text' name='mailing_address_zip' value='{{profile["mailing_address"]["zip"]}}'/>
+					</p>
+				</section>
+			</main>
+			<footer>
+				<p>&#169; 2016 IBM. All rights reserved.</p>
+			</footer>
+		</div>
+	</body>
+</html>
