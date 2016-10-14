@@ -63,6 +63,9 @@ def g(key, default_value):
 		session[key] = default_value
 	return session[key]
 
+def get_empty_customer_profile():
+	return {"mailing_address": {"city": "", "state": "", "address_line_2": "", "zip": "", "address_line_1": ""}, "account_balance": {"current_balance": 0,"current_balance_as_of_date": ""}, "home_address": {"city": "", "state": "", "address_line_2": "", "zip": "", "address_line_1": ""}}
+
 def get_cust_id(args):
 	global CUST_ID_VAR_NAME
 	cust_id = 1000000 + randint(0, 999999)
@@ -72,7 +75,7 @@ def get_cust_id(args):
 	
 def get_cust_profile(cust_id):
 	global CUST_ID_VAR_NAME, CRM_REPO
-	cust_profile = {}
+	cust_profile = get_empty_customer_profile()
 	if cust_id in CRM_REPO:
 		cust_profile = CRM_REPO[cust_id]
 	return cust_profile
@@ -117,7 +120,6 @@ def Index_Post():
 	return render_template(CHAT_TEMPLATE, cust_id=cust_id, profile=customer_profile)
 
 port = os.getenv('PORT', '5000')
-
 if __name__ == "__main__":
 	app.wsgi_app = SessionMiddleware(app.wsgi_app, session_opts)
 	app.session_interface = BeakerSessionInterface()
